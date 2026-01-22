@@ -1,1 +1,369 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studio Ushio | Official Website</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;400;600&family=Zen+Old+Mincho:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Zen Old Mincho', 'Noto Serif JP', serif;
+            /* 真夜中の日本海をイメージした深い青黒いグラデーション */
+            background: linear-gradient(to bottom, #010203 0%, #030814 100%);
+            color: #f0f0f0;
+            overflow-x: hidden;
+        }
 
+        /* カスタムスクロールバー */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #02040a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 4px;
+        }
+
+        /* サーチライト用キャンバス */
+        #searchlight-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* 高級感を出すための微細な調整 */
+        .glass-panel {
+            background: rgba(10, 15, 30, 0.6); /* 青みを帯びた黒 */
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .glass-panel:hover {
+            border-color: rgba(255, 255, 255, 0.3);
+            background: rgba(20, 30, 50, 0.7);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+        }
+        
+        .glass-panel:hover {
+            border-color: rgba(255, 255, 255, 0.3);
+            background: rgba(30, 30, 30, 0.8);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .text-gold {
+            color: #d4af37;
+        }
+
+        .border-gold {
+            border-color: #d4af37;
+        }
+
+        /* アニメーション */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 1.5s ease-out forwards;
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col">
+
+    <!-- 背景エフェクト -->
+    <canvas id="searchlight-canvas"></canvas>
+
+    <!-- ヘッダー / Hero Section -->
+    <header class="relative w-full h-[80vh] flex flex-col justify-center items-center text-center px-4">
+        <div class="animate-fade-in z-10 mix-blend-screen">
+            <p class="text-sm md:text-base tracking-[0.3em] text-blue-200/60 mb-4 uppercase">Photography & Creative Space</p>
+            <h1 class="text-5xl md:text-7xl lg:text-8xl font-thin tracking-widest mb-6 border-b border-white/20 pb-8 inline-block drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]">
+                Studio Ushio
+            </h1>
+            <p class="text-lg md:text-xl font-light tracking-widest mt-4 text-blue-100/80">
+                深淵を照らす光。<br class="md:hidden">静寂に響く鼓動。
+            </p>
+        </div>
+        
+        <!-- スクロールダウンインジケーター -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce opacity-50">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+            </svg>
+        </div>
+    </header>
+
+    <!-- メインコンテンツ -->
+    <main class="flex-grow w-full max-w-6xl mx-auto px-6 py-20 z-10">
+        
+        <!-- 3つのボタン（リンクカード） -->
+        <section class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-32">
+            
+            <!-- Link 1 -->
+            <a href="#" class="glass-panel group block h-full flex flex-col overflow-hidden">
+                <div class="h-64 overflow-hidden relative">
+                    <img src="https://images.unsplash.com/photo-1542038784456-1ea8e935640e?q=80&w=2070&auto=format&fit=crop" alt="各種撮影" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100">
+                    <div class="absolute inset-0 bg-blue-900/30 group-hover:bg-transparent transition-colors"></div>
+                </div>
+                <div class="p-8 flex-grow flex flex-col justify-between text-center border-t border-white/10">
+                    <div>
+                        <h2 class="text-2xl mb-4 font-normal tracking-wider group-hover:text-gold transition-colors">各種撮影</h2>
+                        <p class="text-sm text-gray-400 leading-relaxed font-sans">
+                            ポートレート、宣材、アーティスティックな作品撮りまで。<br>
+                            あなたの魅力を最大限に引き出す、プロフェッショナルな撮影体験を提供します。
+                        </p>
+                    </div>
+                    <div class="mt-6">
+                        <span class="text-xs tracking-widest border-b border-transparent group-hover:border-gold pb-1 transition-all">VIEW MORE</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Link 2 -->
+            <a href="#" class="glass-panel group block h-full flex flex-col overflow-hidden">
+                <div class="h-64 overflow-hidden relative">
+                    <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?q=80&w=2070&auto=format&fit=crop" alt="Power Tide" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100">
+                    <div class="absolute inset-0 bg-blue-900/30 group-hover:bg-transparent transition-colors"></div>
+                </div>
+                <div class="p-8 flex-grow flex flex-col justify-between text-center border-t border-white/10">
+                    <div>
+                        <h2 class="text-2xl mb-4 font-normal tracking-wider group-hover:text-gold transition-colors">Power Tide</h2>
+                        <p class="text-sm text-gray-400 leading-relaxed font-sans">
+                            力強く、満ちていく潮のように。<br>
+                            エネルギー溢れる瞬間を切り取る、Studio Ushio独自のクリエイティブ・セッション。
+                        </p>
+                    </div>
+                    <div class="mt-6">
+                        <span class="text-xs tracking-widest border-b border-transparent group-hover:border-gold pb-1 transition-all">VIEW MORE</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Link 3 -->
+            <a href="#" class="glass-panel group block h-full flex flex-col overflow-hidden">
+                <div class="h-64 overflow-hidden relative">
+                    <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?q=80&w=1964&auto=format&fit=crop" alt="見つめる写真のはじめ型" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100">
+                    <div class="absolute inset-0 bg-blue-900/30 group-hover:bg-transparent transition-colors"></div>
+                </div>
+                <div class="p-8 flex-grow flex flex-col justify-between text-center border-t border-white/10">
+                    <div>
+                        <h2 class="text-2xl mb-4 font-normal tracking-wider group-hover:text-gold transition-colors">見つめる写真の<br>はじめ型</h2>
+                        <p class="text-sm text-gray-400 leading-relaxed font-sans">
+                            レンズ越しに自分自身と対話する。<br>
+                            写真を通して新しい視点と表現を見つけるための、初心者向けワークショップ。
+                        </p>
+                    </div>
+                    <div class="mt-6">
+                        <span class="text-xs tracking-widest border-b border-transparent group-hover:border-gold pb-1 transition-all">VIEW MORE</span>
+                    </div>
+                </div>
+            </a>
+
+        </section>
+
+        <!-- 1500*1500 PROJECT バナー -->
+        <section class="mb-24 px-4 md:px-0">
+            <a href="#" class="block relative w-full overflow-hidden group border border-white/20 bg-black">
+                <div class="absolute inset-0 bg-gradient-to-r from-blue-950 to-black z-0"></div>
+                <!-- バナー背景画像（薄く） -->
+                <img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=2070&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover opacity-20 group-hover:opacity-30 transition-opacity duration-500 z-0 mix-blend-luminosity">
+                
+                <div class="relative z-10 py-16 px-8 flex flex-col items-center justify-center text-center">
+                    <h3 class="text-4xl md:text-6xl font-light tracking-[0.2em] mb-2 group-hover:text-white transition-colors">
+                        1500<span class="text-gold mx-2 text-3xl align-middle">×</span>1500
+                    </h3>
+                    <p class="text-xl md:text-2xl tracking-[0.5em] font-thin text-gray-300 group-hover:text-gold transition-colors">PROJECT</p>
+                    <div class="mt-8 w-16 h-[1px] bg-white/50 group-hover:w-32 transition-all duration-500"></div>
+                    <p class="mt-6 text-xs text-gray-500 tracking-widest">LIMITED EDITION ART WORKS</p>
+                </div>
+            </a>
+        </section>
+
+        <!-- PR コメントエリア -->
+        <section class="max-w-3xl mx-auto text-center px-4">
+            <div class="mb-8">
+                <img src="https://api.iconify.design/ph:quotes-fill.svg?color=%23cccccc" alt="quote" class="w-12 h-12 mx-auto mb-6 opacity-50">
+                <h4 class="text-xl md:text-2xl font-light mb-8 tracking-widest text-blue-50">「凪と荒波、その狭間で。」</h4>
+            </div>
+            
+            <p class="text-gray-300 leading-loose text-sm md:text-base font-sans text-justify md:text-center">
+                Studio Ushioは、真夜中の海のような静謐な空間です。<br>
+                そこは、あなたの中に眠る「まだ見ぬ自分」と出会うための場所。<br><br>
+                徹底的にこだわり抜いたライティングは、暗い海原を照らす灯台のよう。<br>
+                外の世界の喧騒を遮断し、被写体とカメラマンが呼吸を合わせる濃密な時間。<br>
+                深い闇の中から、あなたの本質を鮮やかに浮かび上がらせます。<br><br>
+                特別な日の記念にも、日常の記録にも、アート作品の創作にも。<br>
+                Studio Ushioで、深淵なる写真体験を。
+            </p>
+
+            <div class="mt-12">
+                <button class="px-10 py-3 border border-white/30 text-sm tracking-[0.2em] hover:bg-white hover:text-black transition-all duration-300">
+                    CONTACT US
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="w-full border-t border-white/10 py-12 text-center text-gray-500 text-xs tracking-widest mt-auto z-10 bg-black/80 backdrop-blur-md">
+        <p class="mb-2">Studio Ushio</p>
+        <p>&copy; 2024 Studio Ushio All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        /**
+         * Midnight Sea & Lighthouse Effect
+         * 真夜中の日本海と灯台のサーチライトを表現
+         */
+        const canvas = document.getElementById('searchlight-canvas');
+        const ctx = canvas.getContext('2d');
+
+        let width, height;
+        let waves = [];
+        let lighthouse;
+
+        // リサイズ処理
+        function resize() {
+            width = window.innerWidth;
+            height = window.innerHeight;
+            canvas.width = width;
+            canvas.height = height;
+            
+            // 波の初期化
+            initWaves();
+            // 灯台の初期化
+            lighthouse = new Lighthouse();
+        }
+
+        window.addEventListener('resize', resize);
+        
+        // 波クラス
+        class Wave {
+            constructor(y, amplitude, wavelength, speed, color) {
+                this.y = y;
+                this.amplitude = amplitude;
+                this.wavelength = wavelength;
+                this.speed = speed;
+                this.color = color;
+                this.offset = Math.random() * 100;
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.moveTo(0, height);
+                for (let x = 0; x <= width; x += 10) {
+                    // 複数のサイン波を合成して複雑な波を表現
+                    const y = this.y + 
+                              Math.sin((x + this.offset) * this.wavelength) * this.amplitude +
+                              Math.sin((x + this.offset * 0.5) * this.wavelength * 0.5) * (this.amplitude * 0.5);
+                    ctx.lineTo(x, y);
+                }
+                ctx.lineTo(width, height);
+                ctx.closePath();
+                ctx.fillStyle = this.color;
+                ctx.fill();
+
+                this.offset += this.speed;
+            }
+        }
+
+        function initWaves() {
+            waves = [];
+            // 奥の波（ゆっくり、暗い）
+            waves.push(new Wave(height * 0.7, 30, 0.003, 0.5, 'rgba(10, 20, 40, 0.3)'));
+            // 中間の波
+            waves.push(new Wave(height * 0.8, 40, 0.005, 0.8, 'rgba(5, 10, 25, 0.5)'));
+            // 手前の波（動きが速い、少し濃い）
+            waves.push(new Wave(height * 0.9, 50, 0.007, 1.2, 'rgba(2, 5, 15, 0.8)'));
+        }
+
+        // 灯台クラス
+        class Lighthouse {
+            constructor() {
+                this.angle = 0;
+                this.rotationSpeed = 0.005; // 回転速度
+            }
+
+            draw() {
+                const centerX = width * 0.8; // 画面右寄り
+                const centerY = height * 0.4; // 水平線より少し上
+                const beamLength = Math.max(width, height) * 2;
+                const beamWidth = 0.4; // ビームの広がり（ラジアン）
+
+                ctx.save();
+                ctx.translate(centerX, centerY);
+                ctx.rotate(this.angle);
+
+                // メインの光のビーム
+                const gradient = ctx.createRadialGradient(0, 0, 0, 0, 0, beamLength);
+                gradient.addColorStop(0, 'rgba(255, 255, 240, 0.4)'); // 光源付近
+                gradient.addColorStop(0.1, 'rgba(255, 255, 240, 0.1)'); 
+                gradient.addColorStop(1, 'rgba(255, 255, 240, 0)');   // 遠くは消える
+
+                ctx.fillStyle = gradient;
+                
+                // 扇形の描画
+                ctx.beginPath();
+                ctx.moveTo(0, 0);
+                ctx.arc(0, 0, beamLength, -beamWidth / 2, beamWidth / 2);
+                ctx.closePath();
+                ctx.fill();
+
+                // 逆側の薄い光（回転灯の反射）
+                ctx.beginPath();
+                ctx.moveTo(0, 0);
+                ctx.arc(0, 0, beamLength * 0.5, Math.PI - beamWidth / 4, Math.PI + beamWidth / 4);
+                ctx.fillStyle = 'rgba(200, 220, 255, 0.02)';
+                ctx.fill();
+
+                ctx.restore();
+
+                // 光源の輝き
+                const glow = ctx.createRadialGradient(centerX, centerY, 0, centerX, centerY, 40);
+                glow.addColorStop(0, 'rgba(255, 255, 255, 0.8)');
+                glow.addColorStop(1, 'rgba(255, 255, 255, 0)');
+                ctx.fillStyle = glow;
+                ctx.beginPath();
+                ctx.arc(centerX, centerY, 40, 0, Math.PI * 2);
+                ctx.fill();
+
+                this.angle += this.rotationSpeed;
+            }
+        }
+
+        resize();
+
+        // アニメーションループ
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
+
+            // 合成モード設定
+            
+            // 灯台の光（スクリーン合成で明るく）
+            ctx.globalCompositeOperation = 'screen';
+            if(lighthouse) lighthouse.draw();
+
+            // 波の描画（通常合成）
+            ctx.globalCompositeOperation = 'source-over';
+            waves.forEach(wave => wave.draw());
+
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+    </script>
+</body>
+</html>
