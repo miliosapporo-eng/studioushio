@@ -55,13 +55,6 @@
             transform: translateY(-5px);
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
         }
-        
-        .glass-panel:hover {
-            border-color: rgba(255, 255, 255, 0.3);
-            background: rgba(30, 30, 30, 0.8);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-        }
 
         .text-gold {
             color: #d4af37;
@@ -69,6 +62,12 @@
 
         .border-gold {
             border-color: #d4af37;
+        }
+
+        /* ロゴの逆光エフェクト用トランジション */
+        #logo-img {
+            transition: filter 0.1s linear; /* 素早い変化に対応するため短めに */
+            will-change: filter;
         }
 
         /* アニメーション */
@@ -88,12 +87,23 @@
 
     <!-- ヘッダー / Hero Section -->
     <header class="relative w-full h-[80vh] flex flex-col justify-center items-center text-center px-4">
-        <div class="animate-fade-in z-10 mix-blend-screen">
-            <p class="text-sm md:text-base tracking-[0.3em] text-blue-200/60 mb-4 uppercase">Photography & Creative Space</p>
-            <h1 class="text-5xl md:text-7xl lg:text-8xl font-thin tracking-widest mb-6 border-b border-white/20 pb-8 inline-block drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]">
-                Studio Ushio
-            </h1>
-            <p class="text-lg md:text-xl font-light tracking-widest mt-4 text-blue-100/80">
+        <div class="animate-fade-in z-10 mix-blend-screen flex flex-col items-center">
+            <p class="text-sm md:text-base tracking-[0.3em] text-blue-200/60 mb-8 uppercase">Photography & Creative Space</p>
+            
+            <!-- ロゴ画像エリア -->
+            <div class="mb-6 relative">
+                <!-- 
+                     images/studioushio/png (studioushio.pngと解釈) を配置 
+                     onerrorでプレビュー用のダミーテキスト画像を表示するようにしています
+                -->
+                <img id="logo-img" 
+                     src="images/studioushio.png" 
+                     alt="Studio Ushio" 
+                     class="max-w-[80vw] w-auto h-auto md:max-w-xl object-contain drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]"
+                     onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MDAgMTUwIj48dGV4dCB4PSI1MCUiIHk9IjUwJSIgZGMtYW5jaG9yPSJtaWRkbGUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSdzZXJpZicgZm9udC1zaXplPSI4MCIgZmlsbD0id2hpdGUiIGxldHRlci1zcGFjaW5nPSIxMCI+U3R1ZGlvIFVzaGlvPC90ZXh0Pjwvc3ZnPg==';">
+            </div>
+
+            <p class="text-lg md:text-xl font-light tracking-widest mt-8 text-blue-100/80">
                 深淵を照らす光。<br class="md:hidden">静寂に響く鼓動。
             </p>
         </div>
@@ -230,6 +240,7 @@
          */
         const canvas = document.getElementById('searchlight-canvas');
         const ctx = canvas.getContext('2d');
+        const logoImg = document.getElementById('logo-img');
 
         let width, height;
         let waves = [];
@@ -297,9 +308,46 @@
                 this.rotationSpeed = 0.005; // 回転速度
             }
 
-            draw() {
+            updateAndDraw() {
                 const centerX = width * 0.8; // 画面右寄り
                 const centerY = height * 0.4; // 水平線より少し上
+                
+                // --- 逆光エフェクト計算 ---
+                // ロゴの位置を取得
+                if (logoImg) {
+                    const rect = logoImg.getBoundingClientRect();
+                    if (rect.top < height && rect.bottom > 0) { // 画面内にある場合のみ
+                        const logoX = rect.left + rect.width / 2;
+                        const logoY = rect.top + rect.height / 2;
+                        
+                        // 灯台からロゴへの角度
+                        const angleToLogo = Math.atan2(logoY - centerY, logoX - centerX);
+                        
+                        // 現在のビーム角度を -PI ~ PI に正規化
+                        let currentAngle = this.angle % (Math.PI * 2);
+                        if (currentAngle > Math.PI) currentAngle -= Math.PI * 2;
+                        if (currentAngle < -Math.PI) currentAngle += Math.PI * 2;
+
+                        // 角度の差分計算
+                        let diff = Math.abs(currentAngle - angleToLogo);
+                        if (diff > Math.PI) diff = Math.PI * 2 - diff;
+
+                        // ビームの幅より少し広いくらいの範囲で判定 (0.5ラジアン程度)
+                        const hitThreshold = 0.4; 
+                        
+                        if (diff < hitThreshold) {
+                            // ヒット時の強度 (中心に近いほど1.0)
+                            const intensity = 1 - (diff / hitThreshold);
+                            // 逆光エフェクト適用: ブルームを強め、少し明るくする
+                            logoImg.style.filter = `drop-shadow(0 0 ${20 + intensity * 60}px rgba(255, 255, 255, ${0.5 + intensity * 0.5})) brightness(${1 + intensity * 0.5})`;
+                        } else {
+                            // 通常時
+                            logoImg.style.filter = 'drop-shadow(0 0 15px rgba(255,255,255,0.3)) brightness(1)';
+                        }
+                    }
+                }
+                // --- 計算終わり ---
+
                 const beamLength = Math.max(width, height) * 2;
                 const beamWidth = 0.4; // ビームの広がり（ラジアン）
 
@@ -354,7 +402,7 @@
             
             // 灯台の光（スクリーン合成で明るく）
             ctx.globalCompositeOperation = 'screen';
-            if(lighthouse) lighthouse.draw();
+            if(lighthouse) lighthouse.updateAndDraw();
 
             // 波の描画（通常合成）
             ctx.globalCompositeOperation = 'source-over';
