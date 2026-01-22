@@ -99,7 +99,7 @@
                 <img id="logo-img" 
                      src="images/studioushio.png" 
                      alt="Studio Ushio" 
-                     class="max-w-[80vw] w-auto h-auto md:max-w-xl object-contain drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]"
+                     class="max-w-[16vw] w-auto h-auto md:max-w-[115px] object-contain drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]"
                      onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MDAgMTUwIj48dGV4dCB4PSI1MCUiIHk9IjUwJSIgZGMtYW5jaG9yPSJtaWRkbGUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSdzZXJpZicgZm9udC1zaXplPSI4MCIgZmlsbD0id2hpdGUiIGxldHRlci1zcGFjaW5nPSIxMCI+U3R1ZGlvIFVzaGlvPC90ZXh0Pjwvc3ZnPg==';">
             </div>
 
@@ -120,63 +120,70 @@
     <main class="flex-grow w-full max-w-6xl mx-auto px-6 py-20 z-10">
         
         <!-- 3つのボタン（リンクカード） -->
-        <section class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-32">
+        <!-- 縦並びのレイアウトに変更、最大幅を少し絞って読みやすく -->
+        <section class="flex flex-col gap-10 mb-32 max-w-5xl mx-auto">
             
             <!-- Link 1 -->
-            <a href="#" class="glass-panel group block h-full flex flex-col overflow-hidden">
-                <div class="h-64 overflow-hidden relative">
+            <a href="shooting.html" class="glass-panel group flex flex-col md:flex-row overflow-hidden items-stretch transition-all duration-500 hover:bg-white/5">
+                <!-- 画像エリア: 16:9比率 -->
+                <div class="w-full md:w-5/12 aspect-video relative overflow-hidden shrink-0">
                     <img src="https://images.unsplash.com/photo-1542038784456-1ea8e935640e?q=80&w=2070&auto=format&fit=crop" alt="各種撮影" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100">
-                    <div class="absolute inset-0 bg-blue-900/30 group-hover:bg-transparent transition-colors"></div>
+                    <div class="absolute inset-0 bg-blue-900/20 group-hover:bg-transparent transition-colors"></div>
                 </div>
-                <div class="p-8 flex-grow flex flex-col justify-between text-center border-t border-white/10">
+                <!-- テキストエリア -->
+                <div class="p-8 md:p-10 flex-grow flex flex-col justify-center border-t md:border-t-0 md:border-l border-white/10 text-center md:text-left">
                     <div>
-                        <h2 class="text-2xl mb-4 font-normal tracking-wider group-hover:text-gold transition-colors">各種撮影</h2>
+                        <h2 class="text-2xl md:text-3xl mb-4 font-normal tracking-wider group-hover:text-gold transition-colors">各種撮影</h2>
                         <p class="text-sm text-gray-400 leading-relaxed font-sans">
                             ポートレート、宣材、アーティスティックな作品撮りまで。<br>
                             あなたの魅力を最大限に引き出す、プロフェッショナルな撮影体験を提供します。
                         </p>
                     </div>
-                    <div class="mt-6">
+                    <div class="mt-6 flex justify-center md:justify-start">
                         <span class="text-xs tracking-widest border-b border-transparent group-hover:border-gold pb-1 transition-all">VIEW MORE</span>
                     </div>
                 </div>
             </a>
 
             <!-- Link 2 -->
-            <a href="#" class="glass-panel group block h-full flex flex-col overflow-hidden">
-                <div class="h-64 overflow-hidden relative">
-                    <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?q=80&w=2070&auto=format&fit=crop" alt="Power Tide" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100">
-                    <div class="absolute inset-0 bg-blue-900/30 group-hover:bg-transparent transition-colors"></div>
+            <a href="https://powertide.design4qol.com" class="glass-panel group flex flex-col md:flex-row overflow-hidden items-stretch transition-all duration-500 hover:bg-white/5">
+                <!-- 画像エリア: 16:9比率 -->
+                <div class="w-full md:w-5/12 aspect-video relative overflow-hidden shrink-0">
+                    <img src="images/hero.png" alt="Power Tide" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100">
+                    <div class="absolute inset-0 bg-blue-900/20 group-hover:bg-transparent transition-colors"></div>
                 </div>
-                <div class="p-8 flex-grow flex flex-col justify-between text-center border-t border-white/10">
+                <!-- テキストエリア -->
+                <div class="p-8 md:p-10 flex-grow flex flex-col justify-center border-t md:border-t-0 md:border-l border-white/10 text-center md:text-left">
                     <div>
-                        <h2 class="text-2xl mb-4 font-normal tracking-wider group-hover:text-gold transition-colors">Power Tide</h2>
+                        <h2 class="text-2xl md:text-3xl mb-4 font-normal tracking-wider group-hover:text-gold transition-colors">Power Tide</h2>
                         <p class="text-sm text-gray-400 leading-relaxed font-sans">
                             力強く、満ちていく潮のように。<br>
                             エネルギー溢れる瞬間を切り取る、Studio Ushio独自のクリエイティブ・セッション。
                         </p>
                     </div>
-                    <div class="mt-6">
+                    <div class="mt-6 flex justify-center md:justify-start">
                         <span class="text-xs tracking-widest border-b border-transparent group-hover:border-gold pb-1 transition-all">VIEW MORE</span>
                     </div>
                 </div>
             </a>
 
             <!-- Link 3 -->
-            <a href="#" class="glass-panel group block h-full flex flex-col overflow-hidden">
-                <div class="h-64 overflow-hidden relative">
-                    <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?q=80&w=1964&auto=format&fit=crop" alt="見つめる写真のはじめ型" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100">
-                    <div class="absolute inset-0 bg-blue-900/30 group-hover:bg-transparent transition-colors"></div>
+            <a href="https://ppsg.design4qol.com" class="glass-panel group flex flex-col md:flex-row overflow-hidden items-stretch transition-all duration-500 hover:bg-white/5">
+                <!-- 画像エリア: 16:9比率 -->
+                <div class="w-full md:w-5/12 aspect-video relative overflow-hidden shrink-0">
+                    <img src="images/ppsg.jpg" alt="見つめる写真のはじめ型" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100">
+                    <div class="absolute inset-0 bg-blue-900/20 group-hover:bg-transparent transition-colors"></div>
                 </div>
-                <div class="p-8 flex-grow flex flex-col justify-between text-center border-t border-white/10">
+                <!-- テキストエリア -->
+                <div class="p-8 md:p-10 flex-grow flex flex-col justify-center border-t md:border-t-0 md:border-l border-white/10 text-center md:text-left">
                     <div>
-                        <h2 class="text-2xl mb-4 font-normal tracking-wider group-hover:text-gold transition-colors">見つめる写真の<br>はじめ型</h2>
+                        <h2 class="text-2xl md:text-3xl mb-4 font-normal tracking-wider group-hover:text-gold transition-colors">見つめる写真の<br class="md:hidden">はじめ型</h2>
                         <p class="text-sm text-gray-400 leading-relaxed font-sans">
                             レンズ越しに自分自身と対話する。<br>
                             写真を通して新しい視点と表現を見つけるための、初心者向けワークショップ。
                         </p>
                     </div>
-                    <div class="mt-6">
+                    <div class="mt-6 flex justify-center md:justify-start">
                         <span class="text-xs tracking-widest border-b border-transparent group-hover:border-gold pb-1 transition-all">VIEW MORE</span>
                     </div>
                 </div>
@@ -186,10 +193,10 @@
 
         <!-- 1500*1500 PROJECT バナー -->
         <section class="mb-24 px-4 md:px-0">
-            <a href="#" class="block relative w-full overflow-hidden group border border-white/20 bg-black">
+            <a href="https://15001500.design4qol.com" class="block relative w-full overflow-hidden group border border-white/20 bg-black">
                 <div class="absolute inset-0 bg-gradient-to-r from-blue-950 to-black z-0"></div>
                 <!-- バナー背景画像（薄く） -->
-                <img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=2070&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover opacity-20 group-hover:opacity-30 transition-opacity duration-500 z-0 mix-blend-luminosity">
+                <img src="images/1500.jpg" class="absolute inset-0 w-full h-full object-cover opacity-20 group-hover:opacity-30 transition-opacity duration-500 z-0 mix-blend-luminosity">
                 
                 <div class="relative z-10 py-16 px-8 flex flex-col items-center justify-center text-center">
                     <h3 class="text-4xl md:text-6xl font-light tracking-[0.2em] mb-2 group-hover:text-white transition-colors">
