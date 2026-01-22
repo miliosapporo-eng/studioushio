@@ -95,11 +95,12 @@
                 <!-- 
                      images/studioushio/png (studioushio.pngと解釈) を配置 
                      onerrorでプレビュー用のダミーテキスト画像を表示するようにしています
+                     サイズを倍に変更: max-w-[16vw] -> [32vw], md:max-w-[115px] -> [230px]
                 -->
                 <img id="logo-img" 
                      src="images/studioushio.png" 
                      alt="Studio Ushio" 
-                     class="max-w-[16vw] w-auto h-auto md:max-w-[115px] object-contain drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]"
+                     class="max-w-[32vw] w-auto h-auto md:max-w-[230px] object-contain drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]"
                      onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MDAgMTUwIj48dGV4dCB4PSI1MCUiIHk9IjUwJSIgZGMtYW5jaG9yPSJtaWRkbGUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSdzZXJpZicgZm9udC1zaXplPSI4MCIgZmlsbD0id2hpdGUiIGxldHRlci1zcGFjaW5nPSIxMCI+U3R1ZGlvIFVzaGlvPC90ZXh0Pjwvc3ZnPg==';">
             </div>
 
@@ -136,7 +137,8 @@
                         <h2 class="text-2xl md:text-3xl mb-4 font-normal tracking-wider group-hover:text-gold transition-colors">各種撮影</h2>
                         <p class="text-sm text-gray-400 leading-relaxed font-sans">
                             ポートレート、宣材、アーティスティックな作品撮りまで。<br>
-                            あなたの魅力を最大限に引き出す、プロフェッショナルな撮影体験を提供します。
+                            あなたの魅力を最大限に引き出す、プロフェッショナルな撮影体験を提供します。<br>
+                            その他なんでも撮ります。動画もご相談ください。
                         </p>
                     </div>
                     <div class="mt-6 flex justify-center md:justify-start">
@@ -157,8 +159,8 @@
                     <div>
                         <h2 class="text-2xl md:text-3xl mb-4 font-normal tracking-wider group-hover:text-gold transition-colors">Power Tide</h2>
                         <p class="text-sm text-gray-400 leading-relaxed font-sans">
-                            力強く、満ちていく潮のように。<br>
-                            エネルギー溢れる瞬間を切り取る、Studio Ushio独自のクリエイティブ・セッション。
+                            日本海の恵みを遊び尽くす大人のプレミアムな撮影会。<br>
+                            北海道でしか味わえない極上の体験を今すぐブッキングしてください。
                         </p>
                     </div>
                     <div class="mt-6 flex justify-center md:justify-start">
@@ -179,8 +181,8 @@
                     <div>
                         <h2 class="text-2xl md:text-3xl mb-4 font-normal tracking-wider group-hover:text-gold transition-colors">見つめる写真の<br class="md:hidden">はじめ型</h2>
                         <p class="text-sm text-gray-400 leading-relaxed font-sans">
-                            レンズ越しに自分自身と対話する。<br>
-                            写真を通して新しい視点と表現を見つけるための、初心者向けワークショップ。
+                            「写真」の最終目的は、飾られること。考えさせること。拠り所になること。<br>
+                            ではないだろうかという仮説を元に鑑賞することから始めてみようというコミュニティサイト。
                         </p>
                     </div>
                     <div class="mt-6 flex justify-center md:justify-start">
@@ -192,7 +194,7 @@
         </section>
 
         <!-- 1500*1500 PROJECT バナー -->
-        <section class="mb-24 px-4 md:px-0">
+        <section class="mb-12 px-4 md:px-0">
             <a href="https://15001500.design4qol.com" class="block relative w-full overflow-hidden group border border-white/20 bg-black">
                 <div class="absolute inset-0 bg-gradient-to-r from-blue-950 to-black z-0"></div>
                 <!-- バナー背景画像（薄く） -->
@@ -205,6 +207,24 @@
                     <p class="text-xl md:text-2xl tracking-[0.5em] font-thin text-gray-300 group-hover:text-gold transition-colors">PROJECT</p>
                     <div class="mt-8 w-16 h-[1px] bg-white/50 group-hover:w-32 transition-all duration-500"></div>
                     <p class="mt-6 text-xs text-gray-500 tracking-widest">LIMITED EDITION ART WORKS</p>
+                </div>
+            </a>
+        </section>
+
+        <!-- #壁プロ バナー -->
+        <section class="mb-24 px-4 md:px-0">
+            <a href="#" class="block relative w-full overflow-hidden group border border-white/20 bg-black">
+                <div class="absolute inset-0 bg-gradient-to-l from-blue-950 to-black z-0"></div>
+                <!-- バナー背景画像（薄く） -->
+                <img src="images/kabe.jpg" alt="壁プロ" class="absolute inset-0 w-full h-full object-cover opacity-20 group-hover:opacity-30 transition-opacity duration-500 z-0 mix-blend-luminosity">
+                
+                <div class="relative z-10 py-16 px-8 flex flex-col items-center justify-center text-center">
+                    <h3 class="text-4xl md:text-6xl font-light tracking-[0.2em] mb-2 group-hover:text-white transition-colors">
+                        <span class="text-gold mr-2 text-4xl align-middle">#</span>壁プロ
+                    </h3>
+                    <p class="text-xl md:text-2xl tracking-[0.5em] font-thin text-gray-300 group-hover:text-gold transition-colors">WALL PROJECT</p>
+                    <div class="mt-8 w-16 h-[1px] bg-white/50 group-hover:w-32 transition-all duration-500"></div>
+                    <p class="mt-6 text-xs text-gray-500 tracking-widest">ART SPACE COORDINATION</p>
                 </div>
             </a>
         </section>
@@ -235,15 +255,22 @@
 
     </main>
 
-    <footer class="w-full border-t border-white/10 py-12 text-center text-gray-500 text-xs tracking-widest mt-auto z-10 bg-black/80 backdrop-blur-md">
-        <p class="mb-2">Studio Ushio</p>
-        <p>&copy; 2024 Studio Ushio All Rights Reserved.</p>
+    <footer class="w-full border-t border-white/10 py-12 px-6 flex flex-col md:flex-row items-center justify-between text-gray-500 text-xs tracking-widest mt-auto z-10 bg-black/80 backdrop-blur-md">
+        <div class="mb-6 md:mb-0">
+            <a href="https://design4qol.com" target="_blank" rel="noopener noreferrer" class="block hover:opacity-80 transition-opacity">
+                <img src="images/logo2.png" alt="Design4QoL" class="h-8 w-auto">
+            </a>
+        </div>
+        <div class="text-center md:text-right">
+            <p class="mb-2">Studio Ushio</p>
+            <p>&copy; 2026 MiLio, LLC All Rights Reserved.</p>
+        </div>
     </footer>
 
     <script>
         /**
-         * Midnight Sea & Lighthouse Effect
-         * 真夜中の日本海と灯台のサーチライトを表現
+         * Midnight Sea & Lighthouse & Starry Sky Effect
+         * 真夜中の日本海、灯台のサーチライト、そして星空を表現
          */
         const canvas = document.getElementById('searchlight-canvas');
         const ctx = canvas.getContext('2d');
@@ -251,6 +278,7 @@
 
         let width, height;
         let waves = [];
+        let stars = []; // 星の配列を追加
         let lighthouse;
 
         // リサイズ処理
@@ -260,6 +288,8 @@
             canvas.width = width;
             canvas.height = height;
             
+            // 星の初期化
+            initStars();
             // 波の初期化
             initWaves();
             // 灯台の初期化
@@ -268,6 +298,56 @@
 
         window.addEventListener('resize', resize);
         
+        // 星クラス
+        class Star {
+            constructor() {
+                this.init();
+            }
+
+            init() {
+                this.x = Math.random() * width;
+                // 空の領域（画面上部〜70%くらいまで）に分布させる
+                // 下に行くほど少なくなるように分布を調整しても良いが、今回はランダムに
+                this.y = Math.random() * height * 0.75; 
+                
+                // 星の大きさ（遠近感を出すためにサイズにばらつきを）
+                this.radius = Math.random() * 1.2; 
+                
+                // 瞬き用プロパティ
+                this.baseAlpha = Math.random() * 0.7 + 0.1; // 基準の明るさ
+                this.alpha = this.baseAlpha;
+                this.twinkleSpeed = (Math.random() * 0.005 + 0.002) * (Math.random() < 0.5 ? 1 : -1);
+            }
+
+            update() {
+                // ゆっくり明滅させる
+                this.alpha += this.twinkleSpeed;
+                
+                // 範囲を超えたら反転
+                if (this.alpha > this.baseAlpha + 0.2 || this.alpha < this.baseAlpha - 0.2 || this.alpha < 0) {
+                    this.twinkleSpeed *= -1;
+                }
+                
+                // 値を0~1に制限
+                this.alpha = Math.max(0, Math.min(1, this.alpha));
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(255, 255, 255, ${this.alpha})`;
+                ctx.fill();
+            }
+        }
+
+        function initStars() {
+            stars = [];
+            const starCount = Math.floor(width * height / 3000); // 画面サイズに応じて星の数を調整
+            for (let i = 0; i < starCount; i++) {
+                stars.push(new Star());
+            }
+        }
+
         // 波クラス
         class Wave {
             constructor(y, amplitude, wavelength, speed, color) {
@@ -301,11 +381,11 @@
         function initWaves() {
             waves = [];
             // 奥の波（ゆっくり、暗い）
-            waves.push(new Wave(height * 0.7, 30, 0.003, 0.5, 'rgba(10, 20, 40, 0.3)'));
+            waves.push(new Wave(height * 0.7, 30, 0.003, 0.5, 'rgba(10, 20, 40, 0.5)')); // 少し濃くして星を隠す
             // 中間の波
-            waves.push(new Wave(height * 0.8, 40, 0.005, 0.8, 'rgba(5, 10, 25, 0.5)'));
-            // 手前の波（動きが速い、少し濃い）
-            waves.push(new Wave(height * 0.9, 50, 0.007, 1.2, 'rgba(2, 5, 15, 0.8)'));
+            waves.push(new Wave(height * 0.8, 40, 0.005, 0.8, 'rgba(5, 10, 25, 0.7)'));
+            // 手前の波（動きが速い、濃い）
+            waves.push(new Wave(height * 0.9, 50, 0.007, 1.2, 'rgba(2, 5, 15, 0.9)'));
         }
 
         // 灯台クラス
@@ -405,13 +485,18 @@
         function animate() {
             ctx.clearRect(0, 0, width, height);
 
-            // 合成モード設定
+            // 1. 星空の描画（一番奥、通常合成）
+            ctx.globalCompositeOperation = 'source-over';
+            stars.forEach(star => {
+                star.update();
+                star.draw();
+            });
             
-            // 灯台の光（スクリーン合成で明るく）
+            // 2. 灯台の光（スクリーン合成で明るく、星の上に重ねる）
             ctx.globalCompositeOperation = 'screen';
             if(lighthouse) lighthouse.updateAndDraw();
 
-            // 波の描画（通常合成）
+            // 3. 波の描画（通常合成、手前に描画して星や光の下部を隠す）
             ctx.globalCompositeOperation = 'source-over';
             waves.forEach(wave => wave.draw());
 
