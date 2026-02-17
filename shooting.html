@@ -1,1 +1,400 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shooting Menu | Studio Ushio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;400;600&family=Zen+Old+Mincho:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Zen Old Mincho', 'Noto Serif JP', serif;
+            background: linear-gradient(to bottom, #010203 0%, #030814 100%);
+            color: #f0f0f0;
+            overflow-x: hidden;
+        }
 
+        /* カスタムスクロールバー */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #02040a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 4px;
+        }
+
+        /* サーチライト用キャンバス */
+        #searchlight-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* ガラスモーフィズム */
+        .glass-panel {
+            background: rgba(10, 15, 30, 0.6);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .glass-panel:hover {
+            border-color: rgba(255, 255, 255, 0.3);
+            background: rgba(20, 30, 50, 0.7);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+        }
+
+        .text-gold {
+            color: #d4af37;
+        }
+        .border-gold {
+            border-color: #d4af37;
+        }
+        .bg-gold {
+            background-color: #d4af37;
+        }
+
+        /* アニメーション */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 1.5s ease-out forwards;
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col">
+
+    <!-- 背景エフェクト -->
+    <canvas id="searchlight-canvas"></canvas>
+
+    <!-- ナビゲーション（簡易） -->
+    <nav class="absolute top-0 w-full p-6 z-20 flex justify-between items-center">
+        <a href="index.html" class="text-xs tracking-widest text-gray-400 hover:text-white transition-colors flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M15 19l-7-7 7-7" />
+            </svg>
+            BACK TO TOP
+        </a>
+    </nav>
+
+    <!-- ヘッダー / Page Title -->
+    <!-- 下層ページなので高さは控えめに設定 -->
+    <header class="relative w-full h-[50vh] flex flex-col justify-center items-center text-center px-4 mt-10 md:mt-0">
+        <div class="animate-fade-in z-10 mix-blend-screen flex flex-col items-center">
+            <!-- ロゴ画像エリア（小さめに表示） -->
+            <div class="mb-6 relative">
+                 <img id="logo-img" 
+                      src="images/studioushio.png" 
+                      alt="Studio Ushio" 
+                      class="max-w-[150px] w-auto h-auto object-contain drop-shadow-[0_0_15px_rgba(255,255,255,0.3)] opacity-80"
+                      onerror="this.style.display='none'">
+            </div>
+
+            <h1 class="text-3xl md:text-5xl font-light tracking-[0.2em] text-white mb-4">
+                SHOOTING MENU
+            </h1>
+            <div class="w-12 h-[1px] bg-gold/70 mb-6"></div>
+            <p class="text-sm md:text-base tracking-widest text-blue-200/60 font-sans">
+                各種撮影プランのご案内
+            </p>
+        </div>
+    </header>
+
+    <!-- メインコンテンツ -->
+    <main class="flex-grow w-full max-w-6xl mx-auto px-6 py-10 z-10">
+        
+        <!-- メニューグリッド -->
+        <!-- 今後項目が増えても良いようにGridレイアウトを採用 -->
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-10 mb-32 max-w-5xl mx-auto">
+            
+            <!-- Item 1: Sapporo Premium Portrait -->
+            <!-- 唯一の要素なので、md以上では2カラム分の幅を使っても良いが、統一感のためカードデザインを維持 -->
+            <a href="subscription.html" class="glass-panel group flex flex-col overflow-hidden h-full md:col-span-2 md:flex-row transition-all duration-500">
+                <!-- 画像エリア -->
+                <div class="w-full md:w-1/2 aspect-video md:aspect-auto relative overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=2864&auto=format&fit=crop" alt="Sapporo Premium Portrait" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-90 group-hover:opacity-100">
+                    <div class="absolute inset-0 bg-blue-900/30 group-hover:bg-transparent transition-colors"></div>
+                    <!-- ラベル -->
+                    <div class="absolute top-4 left-4 bg-black/60 backdrop-blur-sm border border-white/20 px-3 py-1">
+                        <span class="text-[10px] tracking-[0.2em] text-gold uppercase">Subscription</span>
+                    </div>
+                </div>
+                
+                <!-- テキストエリア -->
+                <div class="p-8 md:p-12 w-full md:w-1/2 flex flex-col justify-center border-t md:border-t-0 md:border-l border-white/10">
+                    <h2 class="text-2xl md:text-3xl mb-2 font-normal tracking-wide group-hover:text-gold transition-colors">
+                        Sapporo Premium Portrait
+                    </h2>
+                    <p class="text-xs text-blue-300 tracking-wider mb-6 uppercase">札幌キャスト・モデル専属サブスク</p>
+                    
+                    <p class="text-sm text-gray-400 leading-loose font-sans mb-8">
+                        定期的な撮影で、あなたの魅力を多角的に切り取る。<br>
+                        季節の移ろいと共に変化する表情をアーカイブする、<br>
+                        キャスト・モデルのための特別なサブスクリプションプラン。
+                    </p>
+                    
+                    <div class="mt-auto flex items-center gap-3">
+                        <span class="text-xs tracking-widest border-b border-white/30 group-hover:border-gold pb-1 transition-all">VIEW DETAILS</span>
+                        <svg class="w-4 h-4 text-gold transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                    </div>
+                </div>
+            </a>
+
+            <!-- 今後ここにメニューを追加 -->
+            <!-- 
+            <a href="#" class="glass-panel group ...">...</a> 
+            -->
+
+        </section>
+
+        <!-- お問い合わせセクション (Footer直前) -->
+        <section class="max-w-2xl mx-auto text-center mb-20 px-4">
+            <div class="p-10 border border-white/10 bg-white/5 backdrop-blur-sm relative overflow-hidden">
+                <!-- 装飾 -->
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-blue-500/50 to-transparent"></div>
+                
+                <h3 class="text-lg md:text-xl font-light mb-6 tracking-widest text-white">
+                    オーダーメイド撮影のご相談
+                </h3>
+                <p class="text-sm text-gray-400 leading-relaxed font-sans mb-10">
+                    上記プラン以外の撮影、法人案件、クリエイティブワークなど、<br class="hidden md:block">
+                    お客様のご要望に合わせた撮影も承っております。<br>
+                    まずはお気軽にご連絡ください。
+                </p>
+
+                <a href="mailto:request@design4qol.com" class="inline-flex items-center justify-center px-10 py-4 border border-gold/50 text-gold text-xs tracking-[0.2em] hover:bg-gold hover:text-black transition-all duration-300 group">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-3 group-hover:animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                    その他についてはご相談ください
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- フッター -->
+    <footer class="w-full border-t border-white/10 py-12 px-6 flex flex-col md:flex-row items-center justify-between text-gray-500 text-xs tracking-widest mt-auto z-10 bg-black/80 backdrop-blur-md">
+        <div class="mb-6 md:mb-0">
+            <a href="https://design4qol.com" target="_blank" rel="noopener noreferrer" class="block hover:opacity-80 transition-opacity">
+                <img src="images/logo2.png" alt="Design4QoL" class="h-8 w-auto opacity-70 hover:opacity-100 transition-opacity">
+            </a>
+        </div>
+        <div class="text-center md:text-right">
+            <p class="mb-2">Studio Ushio</p>
+            <p>&copy; 2026 MiLio, LLC All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- 背景アニメーションスクリプト -->
+    <script>
+        /**
+         * Midnight Sea & Lighthouse & Starry Sky Effect
+         * 共通のアニメーションロジック
+         */
+        const canvas = document.getElementById('searchlight-canvas');
+        const ctx = canvas.getContext('2d');
+        const logoImg = document.getElementById('logo-img');
+
+        let width, height;
+        let waves = [];
+        let stars = [];
+        let lighthouse;
+
+        function resize() {
+            width = window.innerWidth;
+            height = window.innerHeight;
+            canvas.width = width;
+            canvas.height = height;
+            
+            initStars();
+            initWaves();
+            lighthouse = new Lighthouse();
+        }
+
+        window.addEventListener('resize', resize);
+        
+        class Star {
+            constructor() {
+                this.init();
+            }
+            init() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height * 0.75; 
+                this.radius = Math.random() * 1.2; 
+                this.baseAlpha = Math.random() * 0.7 + 0.1;
+                this.alpha = this.baseAlpha;
+                this.twinkleSpeed = (Math.random() * 0.005 + 0.002) * (Math.random() < 0.5 ? 1 : -1);
+            }
+            update() {
+                this.alpha += this.twinkleSpeed;
+                if (this.alpha > this.baseAlpha + 0.2 || this.alpha < this.baseAlpha - 0.2 || this.alpha < 0) {
+                    this.twinkleSpeed *= -1;
+                }
+                this.alpha = Math.max(0, Math.min(1, this.alpha));
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(255, 255, 255, ${this.alpha})`;
+                ctx.fill();
+            }
+        }
+
+        function initStars() {
+            stars = [];
+            const starCount = Math.floor(width * height / 3000);
+            for (let i = 0; i < starCount; i++) {
+                stars.push(new Star());
+            }
+        }
+
+        class Wave {
+            constructor(y, amplitude, wavelength, speed, color) {
+                this.y = y;
+                this.amplitude = amplitude;
+                this.wavelength = wavelength;
+                this.speed = speed;
+                this.color = color;
+                this.offset = Math.random() * 100;
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.moveTo(0, height);
+                for (let x = 0; x <= width; x += 10) {
+                    const y = this.y + 
+                              Math.sin((x + this.offset) * this.wavelength) * this.amplitude +
+                              Math.sin((x + this.offset * 0.5) * this.wavelength * 0.5) * (this.amplitude * 0.5);
+                    ctx.lineTo(x, y);
+                }
+                ctx.lineTo(width, height);
+                ctx.closePath();
+                ctx.fillStyle = this.color;
+                ctx.fill();
+                this.offset += this.speed;
+            }
+        }
+
+        function initWaves() {
+            waves = [];
+            waves.push(new Wave(height * 0.7, 30, 0.003, 0.5, 'rgba(10, 20, 40, 0.5)')); 
+            waves.push(new Wave(height * 0.8, 40, 0.005, 0.8, 'rgba(5, 10, 25, 0.7)'));
+            waves.push(new Wave(height * 0.9, 50, 0.007, 1.2, 'rgba(2, 5, 15, 0.9)'));
+        }
+
+        class Lighthouse {
+            constructor() {
+                this.angle = 0;
+                this.rotationSpeed = 0.005;
+            }
+
+            updateAndDraw() {
+                const centerX = width * 0.8;
+                const centerY = height * 0.4;
+                
+                // --- 逆光エフェクト判定 ---
+                // 下層ページでもロゴがヘッダーにあるため同様に機能させる
+                if (logoImg && logoImg.offsetParent !== null) { // 表示されている場合のみ
+                    const rect = logoImg.getBoundingClientRect();
+                    if (rect.top < height && rect.bottom > 0) {
+                        const logoX = rect.left + rect.width / 2;
+                        const logoY = rect.top + rect.height / 2;
+                        
+                        const angleToLogo = Math.atan2(logoY - centerY, logoX - centerX);
+                        let currentAngle = this.angle % (Math.PI * 2);
+                        if (currentAngle > Math.PI) currentAngle -= Math.PI * 2;
+                        if (currentAngle < -Math.PI) currentAngle += Math.PI * 2;
+
+                        let diff = Math.abs(currentAngle - angleToLogo);
+                        if (diff > Math.PI) diff = Math.PI * 2 - diff;
+
+                        const hitThreshold = 0.4; 
+                        
+                        if (diff < hitThreshold) {
+                            const intensity = 1 - (diff / hitThreshold);
+                            logoImg.style.transition = 'filter 0.1s linear';
+                            logoImg.style.filter = `drop-shadow(0 0 ${10 + intensity * 40}px rgba(255, 255, 255, ${0.3 + intensity * 0.5})) brightness(${1 + intensity * 0.5})`;
+                        } else {
+                            logoImg.style.filter = 'drop-shadow(0 0 15px rgba(255,255,255,0.3)) brightness(1)';
+                        }
+                    }
+                }
+                // ---
+
+                const beamLength = Math.max(width, height) * 2;
+                const beamWidth = 0.4;
+
+                ctx.save();
+                ctx.translate(centerX, centerY);
+                ctx.rotate(this.angle);
+
+                const gradient = ctx.createRadialGradient(0, 0, 0, 0, 0, beamLength);
+                gradient.addColorStop(0, 'rgba(255, 255, 240, 0.4)');
+                gradient.addColorStop(0.1, 'rgba(255, 255, 240, 0.1)'); 
+                gradient.addColorStop(1, 'rgba(255, 255, 240, 0)');
+
+                ctx.fillStyle = gradient;
+                
+                ctx.beginPath();
+                ctx.moveTo(0, 0);
+                ctx.arc(0, 0, beamLength, -beamWidth / 2, beamWidth / 2);
+                ctx.closePath();
+                ctx.fill();
+
+                ctx.beginPath();
+                ctx.moveTo(0, 0);
+                ctx.arc(0, 0, beamLength * 0.5, Math.PI - beamWidth / 4, Math.PI + beamWidth / 4);
+                ctx.fillStyle = 'rgba(200, 220, 255, 0.02)';
+                ctx.fill();
+
+                ctx.restore();
+
+                const glow = ctx.createRadialGradient(centerX, centerY, 0, centerX, centerY, 40);
+                glow.addColorStop(0, 'rgba(255, 255, 255, 0.8)');
+                glow.addColorStop(1, 'rgba(255, 255, 255, 0)');
+                ctx.fillStyle = glow;
+                ctx.beginPath();
+                ctx.arc(centerX, centerY, 40, 0, Math.PI * 2);
+                ctx.fill();
+
+                this.angle += this.rotationSpeed;
+            }
+        }
+
+        resize();
+
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
+
+            ctx.globalCompositeOperation = 'source-over';
+            stars.forEach(star => {
+                star.update();
+                star.draw();
+            });
+            
+            ctx.globalCompositeOperation = 'screen';
+            if(lighthouse) lighthouse.updateAndDraw();
+
+            ctx.globalCompositeOperation = 'source-over';
+            waves.forEach(wave => wave.draw());
+
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+    </script>
+</body>
+</html>
