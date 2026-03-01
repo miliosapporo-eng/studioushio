@@ -122,13 +122,13 @@
             
             <!-- Item 1: Sapporo Premium Portrait -->
             <!-- 唯一の要素なので、md以上では2カラム分の幅を使っても良いが、統一感のためカードデザインを維持 -->
-            <a href="subscription.html" class="glass-panel group flex flex-col overflow-hidden h-full md:col-span-2 md:flex-row transition-all duration-500">
+            <a href="subscription.html" class="glass-panel group flex flex-col overflow-hidden h-full md:col-span-2 md:flex-row items-stretch transition-all duration-500">
                 <!-- 画像エリア -->
-                <div class="w-full md:w-1/2 aspect-video md:aspect-auto relative overflow-hidden">
-                    <img src="images/spp.jpg" alt="Sapporo Premium Portrait" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-90 group-hover:opacity-100">
+                <div class="w-full md:w-1/2 aspect-video md:aspect-auto relative overflow-hidden shrink-0">
+                    <img src="images/spp.jpg" alt="Sapporo Premium Portrait" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-90 group-hover:opacity-100 absolute inset-0">
                     <div class="absolute inset-0 bg-blue-900/30 group-hover:bg-transparent transition-colors"></div>
                     <!-- ラベル -->
-                    <div class="absolute top-4 left-4 bg-black/60 backdrop-blur-sm border border-white/20 px-3 py-1">
+                    <div class="absolute top-4 left-4 bg-black/60 backdrop-blur-sm border border-white/20 px-3 py-1 z-10">
                         <span class="text-[10px] tracking-[0.2em] text-gold uppercase">Subscription</span>
                     </div>
                 </div>
